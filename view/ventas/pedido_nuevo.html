@@ -125,8 +125,6 @@
         </script>
         <!-- /editor -->
 
-
-
 <div ng-controller="pedidoController">
 	<div class="page-title">
 		<div class="title_left">
@@ -158,15 +156,35 @@
                 </div>
                 <div class="x_content">
                     <br />
-                    <form id="demo-form2" data-parsley-validate class="form-horizontal form-label-left">
+
+                    <form id="form_encabezado" data-parsley-validate class="form-horizontal form-label-left"  ng-submit="Add()">
 
                         <div class="form-group">
-                            <label class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name">First Name <span class="required">*</span>
-                            </label>
+                            <label for="rowid_tercero" class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name">Tercero<span class="required">*</span></label>
                             <div class="col-md-6 col-sm-6 col-xs-12">
-                                <input type="text" id="first-name" required="required" class="form-control col-md-7 col-xs-12">
+                                <input  placeholder="Seleccionar Tercero" type="text" ng-model="Search" class="form-control col-md-7 col-xs-12"></input>
+                                <select 
+                                        	ng-model="pedidos.rowid_cliente_facturacion" id="TerceroSelected" ng-options="partner.rowid as partner.razonsocial 
+                                            for partner in list_tercero | filter:Search" class="form-control col-md-7 col-xs-12" ng-change="onChangeTercero()">
+                            	</select>
                             </div>
                         </div>
+                        
+                        <div class="form-group">
+                            <label for="rowid_tercero" class="control-label col-md-3 col-sm-3 col-xs-12" >Sucursal Facturacion<span class="required">*</span></label>
+                            <div class="col-md-6 col-sm-6 col-xs-12">
+                                <input  placeholder="Seleccionar Tercero" type="text" ng-model="Search" class="form-control col-md-7 col-xs-12"></input>
+                                <select  id="rowid_cliente_facturacion"
+                                            ng-model="sucursal"  ng-options="sucursal as sucursal.nombre_sucursal 
+                                            for sucursal in list_Sucursales " class="form-control" ng-change="onChangeSucursal()" >
+                                        </select>
+                            </div>
+                        </div>
+                        
+                        
+                        
+                        
+                        
                         <div class="form-group">
                             <label class="control-label col-md-3 col-sm-3 col-xs-12" for="last-name">Last Name <span class="required">*</span>
                             </label>
